@@ -13,7 +13,7 @@ export async function up(knex: Knex) {
             .inTable('items');
     });
 }
-
+ 
 export async function down(knex: Knex) {
     return knex.schema.dropTable('locations_items');
 }

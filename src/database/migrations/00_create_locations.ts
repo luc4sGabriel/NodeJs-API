@@ -10,7 +10,7 @@ export async function up(knex: Knex) {
         table.string('uf', 2).notNullable();
         table.string('image').notNullable();
     });
-}
+} 
 
 export async function down(knex: Knex) {
     return knex.schema.dropTable('locations');

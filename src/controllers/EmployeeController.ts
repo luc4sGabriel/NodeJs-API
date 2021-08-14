@@ -13,17 +13,19 @@ export default class EmployeeController{
     
     public async create(request: Request, response: Response) {
         const { 
-            locationIds
+            name,
+            matricula,
+            locationsIds
         } = request.body;
 
         const emp = {
             name,
-            matricula:
+            matricula,
         } as IEmployee;
         
         const employeeModel = new EmployeeModel();
 
-        const newEmployee = await employeeModel.create(request.body,emp);
+        const newEmployee = await employeeModel.create(emp,locationsIds);
 
         response.json(newEmployee);
     }

@@ -1,15 +1,19 @@
-import { table } from "console";
-import Knex from "knex";
+import Knex from 'knex';
 
-export async function up(knex:Knex) {
+export async function up(knex: Knex) {
     return knex.schema.createTable('location_employees', table => {
-        table.integer('location_id')
+        table.increments('id').primary();
+        table.integer('employee_id')
             .notNullable()
             .references('id')
-            .inTable('locations');
-        table.integer('employees_id')
+            .inTable('employees');
+        table.integer('location_id')
         .notNullable()
         .references('id')
-        .inTable('employees')
+        .inTable('locations');
     });
+}
+
+export async function down(knex:Knex) {
+    return knex.schema.dropTable('location_employees');
 }
